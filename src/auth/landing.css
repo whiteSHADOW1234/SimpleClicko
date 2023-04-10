@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Aladin&family=Domine:wght@500&display=swap');
+
+.landing-title {
+  font-family: "Aladin", cursive;
+  font-size: 6em;
+  color: #fff;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.landing-subtitle {
+    font-family: 'Domine', serif;
+    font-size: 1em;
+    color: #dadada;
+    text-align: center;
+    margin-top: -70px;
+}

@@ -1,0 +1,196 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100);
+
+.ranking_bg {
+  background-color: rgb(60, 59, 59);
+  height: 100%;
+  width: calc(100% - 300px);
+  margin-left: 300px;
+}
+
+.top_three {
+  /* background-color: rgb(72, 72, 72); */
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.top_three .avatar {
+  background-color: azure;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin-left: 50px;
+  margin-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* .place_1 .avatar {
+    background-color: rgb(255, 228, 75);
+}
+
+.place_2 .avatar {
+    background-color: rgb(211, 211, 211);
+}
+
+.place_3 .avatar {
+    background-color: rgb(191, 95, 95);
+} */
+
+.player_name {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.player_score {
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.ranking_board{
+    background-color: rgb(60, 59, 59);
+    color: white;
+    width: calc(100% - 300px);
+    margin-left: 150px;
+    height: calc(100% - 330px);
+    margin-top: 2%;
+    margin-bottom: 3%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+.ranking_board .user_ranking {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+.hr {
+  width: 100%;
+  height: 1px;
+  display: block;
+  position: relative;
+  margin-bottom: 0em;
+  padding: 2em 0;
+}
+.hr:after, .hr:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 50%;
+  left: 0;
+}
+.hr:before {
+  background: linear-gradient(90deg, rgb(60, 59, 59) 0%, rgb(60, 59, 59) 50%, transparent 50%, transparent 100%);
+  background-size: 15px;
+  background-position: center;
+  z-index: 1;
+}
+.hr:after {
+  transition: opacity 0.3s ease, -webkit-animation 0.3s ease;
+  transition: opacity 0.3s ease, animation 0.3s ease;
+  transition: opacity 0.3s ease, animation 0.3s ease, -webkit-animation 0.3s ease;
+  background: linear-gradient(to right, #62efab 5%, #f2ea7d 15%, #f2ea7d 25%, #ff8797 35%, #ff8797 45%, #e1a4f4 55%, #e1a4f4 65%, #82fff4 75%, #82fff4 85%, #62efab 95%);
+  background-size: 200%;
+  background-position: 0%;
+  -webkit-animation: bar 15s linear infinite;
+          animation: bar 15s linear infinite;
+}
+@-webkit-keyframes bar {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+@keyframes bar {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+.hr.anim:before {
+  background: linear-gradient(90deg, rgb(60, 59, 59) 0%, rgb(60, 59, 59) 5%, transparent 5%, transparent 10%, rgb(60, 59, 59) 10%, rgb(60, 59, 59) 15%, transparent 15%, transparent 20%, rgb(60, 59, 59) 20%, rgb(60, 59, 59) 25%, transparent 25%, transparent 30%, rgb(60, 59, 59) 30%, rgb(60, 59, 59) 35%, transparent 35%, transparent 40%, rgb(60, 59, 59) 40%, rgb(60, 59, 59) 45%, transparent 45%, transparent 50%, rgb(60, 59, 59) 50%, rgb(60, 59, 59) 55%, transparent 55%, transparent 60%, rgb(60, 59, 59) 60%, rgb(60, 59, 59) 65%, transparent 65%, transparent 70%, rgb(60, 59, 59) 70%, rgb(60, 59, 59) 75%, transparent 75%, transparent 80%, rgb(60, 59, 59) 80%, rgb(60, 59, 59) 85%, transparent 85%, transparent 90%, rgb(60, 59, 59) 90%, rgb(60, 59, 59) 95%, transparent 95%, transparent 100%);
+  background-size: 150px;
+  background-position: center;
+  z-index: 1;
+  -webkit-animation: bar 120s linear infinite;
+          animation: bar 120s linear infinite;
+}
+.hr.anim:hover:before {
+  -webkit-animation-duration: 20s;
+          animation-duration: 20s;
+}
+.hr.anim:hover:after {
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
+
+@media screen and (max-width: 1300px){
+  .ranking_board{
+    width: calc(100% - 90px);
+    margin-left: 60px;
+    height: calc(100% - 330px);
+}
+}
+
+
+@media screen and (max-width: 900px){
+    .ranking_bg{
+      /* background-color: rgb(216, 42, 42); */
+        width: calc(100% - 90px);
+        margin-left: 90px;
+        height: 150%;
+    }
+
+    .ranking_board{
+      width: calc(100% - 20px);
+      margin-left: 10px;
+      height: calc(80% - 330px);
+      font-size: 12px;
+  }
+  .top_three {
+    /* background-color: rgb(72, 72, 72); */
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    color: white;
+  }
+}
+
+
+@media screen and (max-width: 400px){
+    .ranking_bg{
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .ranking_board{
+      width: calc(100% - 20px);
+      margin-left: 1.5px;
+      height: calc(80% - 330px);
+  }
+}

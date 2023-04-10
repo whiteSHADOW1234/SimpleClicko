@@ -1,0 +1,73 @@
+.loading-bg {
+  /* center all the stuff in side it */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* make it full screen */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* make it black */
+  background-color: #000000;
+  /* make it invisible */
+}
+
+.loader {
+  color: #a04e17;
+  width: 40px;
+  height: 39px;
+  margin-top: 30px;
+  display: inline-block;
+  position: relative;
+  border: 5px #fffff0 solid;
+  border-radius: 15% 15% 35% 35%;
+  animation: animloader2 3s ease infinite;
+}
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 40px;
+  top: 8px;
+  border: 4px solid #fffff0;
+  width: 16px;
+  height: 21px;
+  border-radius: 0 4px 4px 0;
+}
+.loader::before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 10px;
+  color: #fffff0;
+  top: -15px;
+  left: 11px;
+  box-sizing: border-box;
+  animation: animloader 1s ease infinite;
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow: 2px 0px rgba(255, 255, 255, 0),
+      12px 0px rgba(255, 255, 255, 0.3), 20px 0px rgba(255, 255, 255, 0);
+  }
+  50% {
+    box-shadow: 2px -5px rgba(255, 255, 255, 0.5),
+      12px -3px rgba(255, 255, 255, 0.5), 20px -2px rgba(255, 255, 255, 0.6);
+  }
+  100% {
+    box-shadow: 2px -8px rgba(255, 255, 255, 0),
+      12px -5px rgba(255, 255, 255, 0), 20px -5px rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes animloader2 {
+  0% {
+    box-shadow: 0 0 inset;
+  }
+  100% {
+    box-shadow: 0 -70px inset;
+  }
+}

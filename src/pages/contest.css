@@ -1,0 +1,122 @@
+.contest_pg {
+  background-color: rgb(99, 65, 15);
+  height: 100vh;
+  width: calc(100% - 300px);
+  float: right;
+  /* center all the stuff inside */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contest_pending {
+  /* center the block */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contest_pending .contest_title {
+  /* background-color: rgb(138, 26, 230); */
+  height: 25vh;
+  font-size: 3.5em;
+  color: beige;
+  font-weight: bold;
+}
+
+.contest_pending .contest_join_code {
+  /* background-color: rgb(230, 26, 91); */
+  height: 3vh;
+  font-size: 1.5em;
+  color: beige;
+  font-weight: bold;
+}
+
+.contest_pending .contest-loader {
+  /* background-color: rgb(230, 26, 26); */
+  height: 25vh;
+  color: beige;
+  font-weight: bold;
+
+  /* center the block */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contest_complete {
+  /* background-color: rgb(230, 26, 26); */
+  height: 100vh;
+  width: 100%;
+  float: right;
+  /* center all the stuff inside */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: beige;
+}
+
+.contest_complete .first_user,
+.contest_complete .second_user {
+  background-color: rgb(206, 112, 12);
+  height: 46vh;
+  width: 100%;
+  font-size: 3.5em;
+  color: beige;
+  font-weight: bold;
+}
+
+.contest_complete .first_user {
+  /* center this text */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.contest_complete .second_user {
+  /* center this text */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.contest_complete .contest_title {
+  height: 8vh;
+  font-size: 2em;
+  color: beige;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.end-button {
+  float: right;
+  background-color: #c43f3f;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0px 4px 0px #a13333;
+  transition: all 0.2s ease-in-out;
+}
+
+.end-button:hover {
+  background-color: #a13333;
+  box-shadow: 0px 2px 0px #751c1c;
+  transform: translateY(2px);
+}
+
+@media screen and (max-width: 900px) {
+  .contest_pg {
+    width: 100%;
+  }
+}

@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Aladin&display=swap');
+
+.App {
+  background-image: url("ClickoCover.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.auth-section{
+  background-color: rgba(231, 231, 231, 0.5);
+  height: 100vh;
+  width: 39vw;
+  float: right;
+  z-index: 2;
+  gap: 35px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  
+}
+
+.main-bg {
+  background-color: rgb(238, 238, 158);
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
+  position: fixed;
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+}
+
+
+@media screen and (max-width: 1300px) and (min-width: 400px) {
+  .App {
+    /* background-image: url("Gcover.png"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+  
+  .auth-section{
+    background-color: rgba(231, 231, 231, 0.5);
+    height: 100vh;
+    width: 100vw;
+    float: right;
+    z-index: 2;
+    /* gap: 35px; */
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    /* center all thing in this div */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+  }
+  
+  .main-bg {
+    background-color: rgb(61, 61, 61);
+    /* background-color: #5e2c1a; */
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+  }
+
+}
+
+
+
+@media screen and (max-width: 400px) {
+  .App {
+    /* background-image: url("Gcover.png"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+  
+  .auth-section{
+    background-color: rgba(231, 231, 231, 0.5);
+    height: 100vh;
+    width: 100vw;
+    float: right;
+    z-index: 2;
+    /* gap: 35px; */
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    /* center all thing in this div */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+  }
+  
+  .main-bg {
+    /* background-color: #5e2c1a; */
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+  }
+
+}
