@@ -1,5 +1,5 @@
 # Clicko (Beta version)
-This is a website that helps people hold competitions and display the ranking of people using this system. The score of each user is determined by **Glicko rating system**.
+This is a React website that helps people hold competitions and display the ranking of people using this system. The score of each user is determined by **Glicko rating system**. So if you want to run this in your local machine, please `git clone` this repository and run `npm start` on your computer.
 **NOTED: The initial score for every user is 1500pts**
 
 
