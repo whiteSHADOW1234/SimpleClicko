@@ -45,6 +45,17 @@
   scroll-behavior: smooth;
   margin-top: 1.3%;
 }
+
+.centered-gif {
+  border-radius: 10px;
+  height: calc(100% - 200px - 53px);
+  width: calc(100% - 550px);
+  margin-left: 50px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  margin-top: 8%;
+}
 .contest_item {
   margin-top: 01rem;
   color: rgb(234, 234, 234);

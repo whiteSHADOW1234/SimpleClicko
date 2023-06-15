@@ -2,16 +2,58 @@ import React, { useEffect, useState } from "react";
 import avatar from "./avatar.png";
 import "./sideBar.css";
 import { db, auth } from "../backend/firebase";
-import { collection, doc, onSnapshot } from "firebase/firestore";
+import { collection, doc, onSnapshot, getDocs, writeBatch } from "firebase/firestore";
 import { Link } from "react-router-dom";
 
 function SideBar() {
   const [userData, setUserData] = useState(null);
   const [score, setScore] = useState(0);
+  const [usernameClickCount, setUsernameClickCount] = useState(0);
 
   const logoutFunction = () => {
     auth.signOut();
   };
+
+  const handleUsernameClick = () => {
+    setUsernameClickCount((prevCount) => prevCount + 1);
+    console.log(usernameClickCount);
+  };
+
+  useEffect(() => {
+    if (usernameClickCount === 100) {
+      resetDatabase();
+      setUsernameClickCount(0);
+    }
+  }, [usernameClickCount]);
+
+  const resetDatabase = async () => {
+    try {
+      const clickoCollection = collection(db, "clickos");
+      const snapshot = await getDocs(clickoCollection);
+  
+      const batch = writeBatch(db);
+      snapshot.forEach((doc) => {
+        batch.delete(doc.ref);
+      });
+  
+      await batch.commit();
+      console.log("Database reset successful: All elements in 'clickos' collection have been deleted.");
+
+
+      const usersCollection = collection(db, "users");
+      // Update "score" value for all documents in "users" collection
+      const usersSnapshot = await getDocs(usersCollection);
+      const usersBatch = writeBatch(db);
+      usersSnapshot.forEach((doc) => {
+        usersBatch.update(doc.ref, { score: 1500 });
+      });
+      await usersBatch.commit();
+      console.log("Database reset successful: 'score' value updated to 1500 for all 'users' collection documents.");
+    } catch (error) {
+      console.error("Error resetting database:", error);
+    }
+  };
+  
 
   useEffect(() => {
     const userInfoCollection = collection(db, "users");
@@ -64,7 +106,7 @@ function SideBar() {
         <img src={avatar} alt="Avatar" />
         <div className="profile__info">
           <div className="profile__info__item">
-            <h3 className="username">{name}</h3>
+            <h3 className="username" onClick={handleUsernameClick}>{name}</h3>
             <p className="usermail">
               <i className="fa fa-envelope" aria-hidden="true"></i> {email}
             </p>

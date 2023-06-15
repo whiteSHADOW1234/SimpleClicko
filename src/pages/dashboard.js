@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./dashboard.css";
 import { db, auth } from "../backend/firebase";
-import { collection, doc, getDoc, addDoc, onSnapshot, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  addDoc,
+  onSnapshot,
+  updateDoc,
+} from "firebase/firestore";
 
 function DashBoard() {
   const [inputValues, setInputValues] = useState([]);
@@ -76,7 +83,7 @@ function DashBoard() {
       userScore: score,
       clickoName: document.getElementById("clicko_name").value,
       joinCode: joinCode,
-      pending: 0,// waiting for opponent
+      pending: 0, // waiting for opponent
     };
     navigate("/contest", { state: state });
   };
@@ -85,12 +92,14 @@ function DashBoard() {
     if (inputValue !== clickoId) {
       alert("Wrong Code !!!");
       return;
-    } else if 
-    (auth.currentUser.uid === clickos.find((clicko) => clicko.id === clickoId).uid001){
+    } else if (
+      auth.currentUser.uid ===
+      clickos.find((clicko) => clicko.id === clickoId).uid001
+    ) {
       alert("You can't join your own Clicko");
       return;
     } else {
-      updateDoc(doc(db, "clickos", clickoId), { 
+      updateDoc(doc(db, "clickos", clickoId), {
         status: 1,
         player02: name,
         playerScore2: score,
@@ -100,7 +109,7 @@ function DashBoard() {
         uid002: auth.currentUser.uid,
         userName2: name,
         userScore2: score,
-        pending: 1,// in progress
+        pending: 1, // in progress
         joinCode: clickoId,
       };
       navigate("/contest", { state: state });
@@ -145,46 +154,69 @@ function DashBoard() {
           </p>
         </div>
       </section>
-      <section className="contest_board">
-        {clickos.map((clicko, index) => (
-          <div className="contest_list" key={clicko.id}>
-            <div className="contest_item">
-              <div className="contest_title">{clicko.clickoName}</div>
-              <div className="contest_time">{clicko.status === 0 ? ("pending"):(clicko.status === 1 ? ("waiting"):("end"))}</div>
-              {clicko.status === 0 ? (
-                <div className="input-container">
-                  <input
-                    required=""
-                    value={inputValues[index]}
-                    onChange={(e) => {
-                      const newValues = [...inputValues];
-                      newValues[index] = e.target.value;
-                      setInputValues(newValues);
-                    }}
-                  />
-                  <button
-                    className="invite-btn"
-                    type="button"
-                    onClick={() => handleInvite(clicko.id, inputValues[index])}
-                  >
-                    Join
-                  </button>
+      {clickos.some((clicko) => clicko.status !== 2) ? (
+        <section className="contest_board">
+          {clickos.map((clicko, index) => (
+            <div className="contest_list" key={clicko.id}>
+              <div className="contest_item">
+                <div className="contest_title">{clicko.clickoName}</div>
+                <div className="contest_time">
+                  {clicko.status === 0
+                    ? "pending"
+                    : clicko.status === 1
+                    ? "waiting"
+                    : "end"}
                 </div>
-              ) : (
-                <div className="contest_time">{clicko.result === 0 ? ("user2 won"):(clicko.result === 0.5 ? ("drew"):(clicko.result === 1 ? ("user1 won"):("terminate")))}</div>
-              )}
+                {clicko.status === 0 ? (
+                  <div className="input-container">
+                    <input
+                      required=""
+                      value={inputValues[index]}
+                      onChange={(e) => {
+                        const newValues = [...inputValues];
+                        newValues[index] = e.target.value;
+                        setInputValues(newValues);
+                      }}
+                    />
+                    <button
+                      className="invite-btn"
+                      type="button"
+                      onClick={() =>
+                        handleInvite(clicko.id, inputValues[index])
+                      }
+                    >
+                      Join
+                    </button>
+                  </div>
+                ) : (
+                  <div className="contest_time">
+                    {clicko.result === 0
+                      ? "user2 won"
+                      : clicko.result === 0.5
+                      ? "drew"
+                      : clicko.result === 1
+                      ? "user1 won"
+                      : "terminate"}
+                  </div>
+                )}
+              </div>
+              <div className="h-divider">
+                <div className="shadow"></div>
+              </div>
             </div>
-            <div className="h-divider">
-              <div className="shadow"></div>
-            </div>
-          </div>
-        ))}
-        <div
-          style={{
-            height: "20px",
-          }}
-        />
-      </section>
+          ))}
+          <div
+            style={{
+              height: "20px",
+            }}
+          />
+        </section>
+      ) : (
+        <div className="empty-contest">
+          <img src="/todo.gif" alt="Todo GIF" className="centered-gif" />
+        </div>
+      )}
+
       <section className="add_contest">
         <div className="create_contest">
           <span className="title">Create your Clicko</span>
