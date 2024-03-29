@@ -1,57 +1,95 @@
-# Clicko (Beta version)
-This is a React website that helps people hold competitions and display the ranking of people using this system. The score of each user is determined by **Glicko rating system**. So if you want to run this in your local machine, please `git clone` this repository and run `npm start` on your computer.
-**NOTED: The initial score for every user is 1500pts**
+# Clicko
 
+Welcome to Clicko, your go-to platform for organizing and participating in campaign events. Clicko provides a comprehensive solution for managing contests, tracking user rankings, and even ordering coffee beans through its integrated online shop. This repository contains the source code for the Clicko website, built using React for the front end and Firebase as the backend.
 
-## Landing Page
-This is the page that user access this website at the very first time or not login yet.
+## Features:
 
-### Log In Page
-- This page will be displayed if user, who did not have a login record on the device, enter this website by the URL.
-    ![Hysrrp_P3](https://github.com/whiteSHADOW1234/SimpleClicko/assets/91242001/dcf51d1b-9e7c-4b4e-b3bd-0d8ecd6b580a)
-### Sign Up Page
-- By pressing the text button (`Do not have an account? Sign up now`) under the **Login** button, user can access this webpage.
-    ![ByI_SauD3](https://github.com/whiteSHADOW1234/SimpleClicko/assets/91242001/96c71c23-ed9f-4f83-8f07-214c9eb41941)
-    **NOTED: The password must have at least 6 characters !!!**
+1. **Contest Creation:** Users can raise contests utilizing the Glicko ranking system. This feature allows users to create and manage contests efficiently. The Glicko ranking system ensures fair competition among participants.
 
-## Main Pages, Functions, and Components
+2. **Complete User Ranking:** Clicko provides a comprehensive ranking system that displays the rankings of all users participating in various contests. This feature allows users to track their progress and compare their performance with others.
 
-### SideBar
-- This helps user easly to direct to other webpages and check current user status, which including...
-    - User Basic Info:
-        An avatar (which have a yellow frame around it) with user name, user gmail, and current Glicko points. 
-    - Navagate Button:
-        DashBoard button move user to the dashboard page
-        Ranking button move user to the ranking page
-        Log out button let user log out the account
-        Other gray buttons are up comimg features that will be done later (welcome to contribute ~ :smile:)
-    ![ryoRd6uP2](https://github.com/whiteSHADOW1234/SimpleClicko/assets/91242001/35614e74-a4f0-421b-8fc3-70e067f3aaee)
+3. **Online Shop:** An integrated online shop allows users to order coffee beans conveniently. This feature enhances user engagement by offering additional services related to the campaign event theme.
 
-    
+4. **Responsive Design:** Clicko is built with a responsive design, ensuring seamless user experience across different devices and screen sizes. Users can access the site from desktops, tablets, and mobile devices without compromising functionality or aesthetics.
 
+## Technologies Used:
 
-### Dashboard
-- The first display screen while user login his/her account.
-    - It contains the up three notifications including a bug report, user wanted, and a donation notice.
-    - Under the three notifications, there are a dashboard (which will be a TODO gif if there's no any competition is held)
-    - There's a Clicko-Create block beside the dashboard section. It enable user to hold a clicko competition by offering the name and hit start button. 
-        - The pink rounded icon is a css animation which is the main feature of this website :laughing:
-    ![B1eDNa_wh](https://github.com/whiteSHADOW1234/SimpleClicko/assets/91242001/86a28418-29b3-4c48-bcdd-af69d91a1dbe)
+- **React:** The front end of Clicko is built using React, a popular JavaScript library for building user interfaces. React provides a modular and efficient way to develop interactive UI components.
 
+- **Firebase:** Firebase is utilized as the backend platform for Clicko. It offers various services such as authentication, real-time database, and cloud functions. Firestore API is specifically used to interact with the cloud database, providing a scalable and reliable backend infrastructure.
 
-### Ranking
-- This page is shown by the score of each user who is using this system
-    - Only the top 3 place will be displayed at the top of this webpage with avatars, user name, and current points. 
-    - Others will be display on a scorllable block which order is decided by the user's score (highest to the lowest).
-    ![r1VMT6OD2](https://github.com/whiteSHADOW1234/SimpleClicko/assets/91242001/7b436cdc-5f5a-48d4-b700-fe290cffd106)
+## Getting Started:
 
+To run Clicko locally, follow these steps:
 
-### Other Functions
-~ Up Coming Features (Welcome to contribute to this project) ~
+1. Fork this repository and clone it to your local machine.
+   ```bash
+   git clone https://github.com/your-username/clicko.git
+   ```
 
+2. Navigate to the project directory.
+   ```bash
+   cd clicko
+   ```
 
-## Special Pages && Functions
-<details>
-<summary>Normal users should not look this !!!</summary>
-Reset all the data except the basic user information can be triggered by tapping the username 100 times.
-</details>
+3. Install dependencies using npm.
+   ```bash
+   npm install
+   ```
+
+4. Configure Firebase:
+   - Create a Firebase project on the Firebase console.
+   - Enable Firestore database service.
+   - Set up Firebase authentication if required.
+   - Obtain your Firebase configuration credentials.
+
+5. Update Firebase configuration:
+   - Locate and open the Firebase configuration file (`src/backend/firebase.js`).
+   - Replace the placeholder values with your Firebase configuration credentials.
+   - Code in `firebase.js` should look like this :point_down:
+        ```javascript
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "firebase/app";
+        import { getAuth } from "firebase/auth";
+        import { getFirestore } from "firebase/firestore";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "YOUR_API_KEY",
+          authDomain: "YOUR_AUTH_DOMAIN",
+          projectId: "YOUR_PROJECT_ID",
+          storageBucket: "YOUR_STORAGE_BUCKET",
+          messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+          appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Initialize Firebase Authentication and get a reference to the service
+        export const auth = getAuth(app);
+
+        // Initialize Firestore and get a reference to the service
+        export const db = getFirestore(app);
+        ```
+
+6. Start the development server.
+   ```bash
+   npm start
+   ```
+
+7. Access Clicko in your browser by visiting `http://localhost:3000`.
+
+## Contributing:
+
+Contributions to Clicko are welcome. To contribute, please follow these guidelines:
+
+1. Fork the repository and create your branch.
+2. Make your changes and ensure they are well-tested.
+3. Create a pull request with a clear description of your changes.
+
+## License:
+
+This project is licensed under the MIT License. Feel free to modify and distribute the code for your own purposes.

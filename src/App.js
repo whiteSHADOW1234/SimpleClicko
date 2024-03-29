@@ -1,5 +1,6 @@
 import "./App.css";
 import DashBoard from "./pages/dashboard";
+import Store from "./pages/store";
 import SideBar from "./pages/sideBar";
 import "./loader.css";
 import React, { useEffect, useState } from "react";
@@ -9,14 +10,13 @@ import { onAuthStateChanged } from "firebase/auth";
 import { Route, Routes } from "react-router-dom";
 import Ranking from "./pages/ranking";
 import Contest from "./pages/contest";
+// import Forum from "./pages/forum";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check if the user is logged in
-    // setLoading(true);
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setLoggedIn(true);
@@ -46,7 +46,9 @@ function App() {
               <Routes>
                 <Route path="/" element={<DashBoard/>} />
                 <Route path="/ranking" element={<Ranking/>} />
+                <Route path="/store" element={<Store/>} />
                 <Route path="/contest" element={<Contest/>} />
+                {/* <Route path="/forum" element={<Forum/>} /> */}
               </Routes>
             </div>
           ) : (

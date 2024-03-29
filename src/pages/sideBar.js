@@ -4,6 +4,7 @@ import "./sideBar.css";
 import { db, auth } from "../backend/firebase";
 import { collection, doc, onSnapshot, getDocs, writeBatch } from "firebase/firestore";
 import { Link } from "react-router-dom";
+// import { removeUserDataFromCookie } from"../backend/cookie.js";
 
 function SideBar() {
   const [userData, setUserData] = useState(null);
@@ -11,6 +12,7 @@ function SideBar() {
   const [usernameClickCount, setUsernameClickCount] = useState(0);
 
   const logoutFunction = () => {
+    // removeUserDataFromCookie();
     auth.signOut();
   };
 
@@ -30,12 +32,12 @@ function SideBar() {
     try {
       const clickoCollection = collection(db, "clickos");
       const snapshot = await getDocs(clickoCollection);
-  
+
       const batch = writeBatch(db);
       snapshot.forEach((doc) => {
         batch.delete(doc.ref);
       });
-  
+
       await batch.commit();
       console.log("Database reset successful: All elements in 'clickos' collection have been deleted.");
 
@@ -53,7 +55,7 @@ function SideBar() {
       console.error("Error resetting database:", error);
     }
   };
-  
+
 
   useEffect(() => {
     const userInfoCollection = collection(db, "users");
@@ -129,15 +131,27 @@ function SideBar() {
             <span>Ranking</span>
           </li>
         </Link>
-        <li
-          tabIndex="0"
-          className="icon-forum"
-          style={{ color: "#808080", backgroundColor: "#696969" }}
-        >
-          <i className="fa fa-comments-o" aria-hidden="true"></i>{" "}
-          <span>Forum</span>
-        </li>
-        <li
+
+        <Link style={{ textDecoration: "none", color: "white" }} to="/store">
+          <li tabIndex="0" className="icon-store">
+            <i className="fa fa-shopping-cart" aria-hidden="true"></i>{" "}
+            <span>Store</span>
+          </li>
+        </Link>
+
+
+        {/* working on it */}
+        {/* <Link style={{ textDecoration: "none", color: "white" }} to="/forum">
+          <li
+            tabIndex="0"
+            className="icon-forum"
+            // style={{ color: "#808080", backgroundColor: "#eeeeee" }}
+          >
+            <i className="fa fa-comments-o" aria-hidden="true"></i>{" "}
+            <span>Forum</span>
+          </li>
+        </Link> */}
+        {/* <li
           tabIndex="0"
           className="icon-users"
           style={{ color: "#808080", backgroundColor: "#696969" }}
@@ -158,7 +172,7 @@ function SideBar() {
         >
           <i className="fa fa-sun-o" aria-hidden="true"></i>{" "}
           <span>Light Mode</span>
-        </li>
+        </li> */}
         <li
           tabIndex="0"
           className="icon-logout"

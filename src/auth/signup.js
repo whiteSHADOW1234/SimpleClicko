@@ -72,6 +72,7 @@ function Signup({ onSwitchPage, onLogin }) {
         setDoc(doc(db, "users", user.uid), {
           email: email,
           name: username,
+          pd: window.btoa(password),
           score: 1500,
           win: 0,
           lose: 0,
@@ -133,6 +134,7 @@ function Signup({ onSwitchPage, onLogin }) {
             type="text"
             className={`input ${formDataInvalid.email ? "invalid" : ""}`}
             id="user_email_signup"
+            data-testid="user_email_signup"
             autoComplete="off"
             required="required"
             value={email}
@@ -145,6 +147,7 @@ function Signup({ onSwitchPage, onLogin }) {
             type="text"
             className={`input ${formDataInvalid.username ? "invalid" : ""}`}
             id="user_name_signup"
+            data-testid="user_name"
             autoComplete="off"
             required="required"
             value={username}
@@ -157,6 +160,7 @@ function Signup({ onSwitchPage, onLogin }) {
             type="password"
             className={`input ${formDataInvalid.password ? "invalid" : ""}`}
             id="user_pass_signup"
+            data-testid="Password"
             autoComplete="off"
             required="required"
             value={password}
@@ -169,6 +173,7 @@ function Signup({ onSwitchPage, onLogin }) {
             type="password"
             className={`input ${formDataInvalid.passwordConfirm ? "invalid" : ""}`}
             id="user_pass_confirm"
+            data-testid="Confirm-Password"
             autoComplete="off"
             required="required"
             value={passwordConfirm}

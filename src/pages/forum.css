@@ -1,0 +1,272 @@
+@import url(https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap);
+
+/* .forum_bg {
+    background-color: rgb(61, 61, 61);
+    height: 100%;
+    width: calc(100% - 300px);
+    margin-left: 300px;
+}
+
+.forum_container {
+    background-color: #ffffff;
+    width: 55rem;
+    height: 37rem;
+    margin-left: 10rem;
+    margin-top: 5rem;
+    display: flex;
+    position: absolute;
+    opacity: 0.7;
+    border-radius: 1rem;
+} */
+
+.forum_bg {
+    background-color: rgb(61, 61, 61);
+    height: 100%;
+    width: calc(100% - 300px);
+    margin-left: 300px;
+}
+
+.forum_container {
+    background-color: #ffffff;
+    width: 55rem;
+    height: 37rem;
+    margin-left: 10rem;
+    margin-top: 5rem;
+    display: flex;
+    position: absolute;
+    opacity: 0.7;
+    border-radius: 1rem;
+}
+
+/* // Style for the blurred background and overlay */
+.forum_container.blurred {
+    filter: blur(5px);
+}
+
+.overlay {
+    position: absolute;
+    /* top: 0;
+    left: 0; */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 0;/* Make sure the overlay appears below the add window */
+}
+
+
+.forum_title {
+    /* background-color: aqua; */
+    font-size: 2.5rem;
+    height: 3rem;
+    width: 15rem;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    position: absolute;
+    color: black;
+    font-family: 'Philosopher', sans-serif;
+}
+
+.discussion_list {
+    top: 4rem;
+    left: 2rem;
+    height: 25rem;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    position: absolute;
+}
+
+.discussion_block {
+    list-style: none;
+    height: 5rem;
+    width: 45rem;
+    margin-top: 1rem;
+    position: relative;
+    border-radius: 0.5rem;
+    border: 0.1rem solid black;
+}
+
+.discussion_block:hover {
+    animation-name: emerge;
+    animation-duration: 0.5s;
+}
+
+@keyframes emerge {
+    from {
+        left: 0rem;
+        top: 0rem;
+    }
+
+    to {
+        left: -0.2rem;
+        top: -0.2rem;
+    }
+}
+
+.discussion_title {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+    margin-left: 8rem;
+    position: absolute;
+    top: 0.5rem;
+}
+
+.discussion_title:hover {
+    color: grey;
+}
+
+.discussion_state {
+    left: 90%;
+    top: 1.5rem;
+    position: absolute;
+    font-size: 1.3rem;
+}
+
+.add_discussion {
+    position: absolute;
+    font-size: 1.5rem;
+    top: 85%;
+    left: 20%;
+    height: 3rem;
+    border: 3px solid black;
+    border-radius: 1rem;
+}
+
+.del_discussion {
+    position: absolute;
+    font-size: 1.5rem;
+    top: 85%;
+    left: 60%;
+    height: 3rem;
+    border: 3px solid black;
+    border-radius: 1rem;
+}
+
+
+.selected_properties {
+    position: absolute;
+    top: 60%;
+    left: 20%;
+    display: grid;
+    grid-auto-flow: column; 
+    grid-gap: 1.5rem;
+}
+
+.selected_properties span:first-child {
+    margin-left: 0;
+}
+
+.selected_properties span {
+    background-color: #bdbdbd;
+    color: #000000;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    font-size:1rem;    
+}
+
+/* add_window property */
+.add_window {
+    position:absolute;
+    top: 23%;
+    left: 43%;
+    /* display:none; */
+    background-color: rgba(10, 10, 10, 0.47);
+    width: 25rem;
+    height: 25rem;
+    border-radius: 1rem;
+    z-index: 1; /* Make sure the add window appears on top of the blurred background */
+}
+
+.add_window h1 {
+    position: absolute;
+    font-size: 1.3rem;
+    left:2rem;
+}
+
+.problem_title {
+    top:0.5rem;
+}
+
+.add_window input {
+    position:absolute;
+    top:4rem;
+    left:2.5rem;
+    height:2rem;
+    width: 20rem;
+}
+
+.problem_content {
+    top: 6rem;
+}
+
+.add_window textarea {
+    position: absolute;
+    top: 9.5rem;
+    left: 2.4rem;
+    height: 4rem;
+    width: 20.2rem;
+}
+
+.add_window span {
+    position:absolute;
+    top:58%;
+    left:2rem;
+    font-size: 1.5rem;
+}
+
+/* parallel the .add_window button */
+.property-buttons button {
+    position: absolute;
+    top: 70%;
+    font-size: 0.5rem;
+    height: 1.5rem;
+    width: 4rem;
+    background-color: #8593a1;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.property-buttons button.selected {
+    background-color: #000000; 
+    color: #ffffff;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+/* Position each button parallel to each other */
+.add_window button:nth-child(1) {
+    left: 2.5rem;
+}
+
+.add_window button:nth-child(2) {
+    left: 7.5rem;
+}
+
+.add_window button:nth-child(3) {
+    left: 12.5rem;
+}
+
+.add_window_confirm {
+    position: absolute;
+    top: 83%;
+    left: 15%;
+    height: 2rem;
+    width: 7rem;
+    border: 3px solid black;
+    border-radius: 1rem;
+    font-size: 1rem;
+    background-color: rgb(255, 255, 255);
+}
+.close_add_window {
+    position: absolute;
+    top: 83%;
+    left: 55%;
+    height: 2rem;
+    width: 7rem;
+    border: 3px solid black;
+    border-radius: 1rem;
+    font-size: 1rem;
+    background-color: rgb(255, 255, 255);
+}
+

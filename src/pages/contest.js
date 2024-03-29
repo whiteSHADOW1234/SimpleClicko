@@ -99,7 +99,7 @@ function Contest() {
   };
 
   return (
-    <div className="contest_pg">
+    <div className="contest_pg" data-testid="contest">
       {status === 0 ? (
         <div className="contest_pending">
           <div className="contest_title">- {clicko_name} -</div>

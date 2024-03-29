@@ -16,6 +16,7 @@ function DashBoard() {
   const [userData, setUserData] = useState(null);
   const [clickos, setClickos] = useState([]);
   const navigate = useNavigate();
+  
   useEffect(() => {
     const clickosCollection = collection(db, "clickos");
     const unsubscribe = onSnapshot(clickosCollection, (snapshot) => {
@@ -116,24 +117,14 @@ function DashBoard() {
     }
   };
 
-  // var totalCreateTime = 5;
-
-  // if (identity === "normal") {
-  //   totalCreateTime = 5;
-  // } else if (identity === "premium") {
-  //   totalCreateTime = 10;
-  // } else if (identity === "admin") {
-  //   totalCreateTime = 15;
-  // }
-
   return (
     <div className="dashboard_bg">
       <section className="notifications">
         <div className="coffee-card">
           <span className="title">&#9749; Clicko Notice</span>
           <p className="description">
-            We are still in the process of building this website. Every time 20
-            new members join, we will add a new feature to it.
+            If you ordered coffee beans through our website, 
+            please bring money for pickup next Tuesday. Thank you!
           </p>
         </div>
         <div className="coffee-card">
@@ -162,7 +153,7 @@ function DashBoard() {
                 <div className="contest_title">{clicko.clickoName}</div>
                 <div className="contest_time">
                   {clicko.status === 0
-                    ? "pending"
+                    ? ""
                     : clicko.status === 1
                     ? "waiting"
                     : "end"}
@@ -212,9 +203,11 @@ function DashBoard() {
           />
         </section>
       ) : (
-        <div className="empty-contest">
-          <img src="/todo.gif" alt="Todo GIF" className="centered-gif" />
-        </div>
+        <section className="empty_contest">
+          <div className="empty_board">
+          <p>No Contest Running Now...</p>
+          </div>
+        </section>
       )}
 
       <section className="add_contest">
@@ -243,7 +236,6 @@ function DashBoard() {
             onClick={handleCreateClicko}
           />
         </div>
-        {/* <div className="create_footer">Time left: {ClickoTime}/{totalCreateTime}</div> */}
       </section>
     </div>
   );
